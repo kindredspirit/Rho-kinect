@@ -13,9 +13,15 @@ Libraries you will need to run my program:
 
 SAITO OBJ LOADER
 -http://code.google.com/p/saitoobjloader/
+	-this is being used in my program to attach meshes i have made in maya to the character that is being tracked by the kinect and displayed in the application window.
 
 SIMPLE OPENNI (OPENNI library wrapper for Processing)
 -http://code.google.com/p/simple-openni/
 	first download the OpenNI_NITE zip package appropriate for your system architecture, unzip the archive and run the install.sh file
 (the install.sh file will simply run a bash script in the console to put the openi and nite files in the correct directory configuration)
-	then download the SimpleOpenNI-0.26.zip and extract all files. Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be located in which ever directory you have specified for your Processing sketches. (Normally in /Users/username/Documents/Processing/"
+	then download the SimpleOpenNI-0.26.zip and extract all files. Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be located in which ever directory you have specified for your Processing sketches. (Normally in /Users/username/Documents/Processing/")
+
+DANIEL SHIFFMAN KINECT (Optional but recommended)
+-http://www.shiffman.net/p5/kinect/
+	his tutorials are also very helpful in getting started with not only his libraries but the general idea and mechanics of the kinect itself.
+
