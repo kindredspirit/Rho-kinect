@@ -5,32 +5,51 @@ import java.awt.Robot;
 
 import controlP5.*;
 
-//KinectStuff
+/**
+*
+* @author Moe
+* @since         10 January 2012
+* @version 0.5   (prerelease, version 5.0)
+* Main class - uses SimpleOpenNI context wrapper to display 
+*              skeletal frame of 1 or more users and perform tracking.
+*            - uses openGL processing libraries to display character
+*              in a interactive 3D environment.
+*/
+
+///////////////////////
+//    KinectStuff    //
+///////////////////////
+
 SimpleOpenNI kinect;
 PushGesture pg;
-XnVSessionManager sessionManager;
+SwipeGesture sg;
+PointDrawer pointDrawer;
+XnVSessionManager sm;
 
-//View stuff:
+//////////////////////
+//    View stuff    //
+//////////////////////
+
 Navi navi;
-
 float floorLevel = 500.0f;
 
-//player:
+//////////////////
+//    Player    //
+//////////////////
+
 float[] eye;
 float xangle, yangle;
 
-//kinect motor adjust
-int tilt;
+///////////////////
+//    GLStuff    //
+///////////////////
 
-//GLStuff:
 GLGrid myGrid;
 GLElongatedCube myLink;
 
-//ControlP5 stuff:
-ControlP5 controlP5;
-
 int sliderValue = 100;
 
+//distance values
 float neckToTorso, rightShoulderToElbow, leftShoulderToElbow;
 
 public void setup() {
@@ -69,13 +88,20 @@ public void setup() {
   kinect = new SimpleOpenNI(this);
   
   kinect.setMirror(false);
-  // enable depthMap generation 
-  kinect.enableDepth(); 
-  // enable skeleton generation for all joints
-  kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_ALL);
+
+  kinect.enableDepth();                              // enable depthMap generation 
+  kinect.enableGesture ();                           // enable gesture detection
+  kinect.enableHands();                              // enable hands
+  kinect.enableUser(SimpleOpenNI.SKEL_PROFILE_ALL);  // enable skeleton generation for all joints
   
-  sessionManager = kinect.createSessionManager("Click,Wave","Swipe");
+  sm = kinect.createSessionManager("Click,Wave","RaiseHand");
   pg = new PushGesture();
+  sg = new SwipeGesture();
+  pointDrawer = new PointDrawer();
+
+  sm.AddListener(pg);
+  sm.AddListener(sg);
+  sm.AddListener(pointDrawer);
 }
 
 float t;
@@ -83,15 +109,13 @@ float t;
 public void draw() {
 
   background(0, 0, 0);
-         
-//  hint(ENABLE_DEPTH_TEST);
+  
     lights();
     myGrid.display();
     pushMatrix();
       translate(0,0,0);
       myLink.display();
     popMatrix();
-//  hint(DISABLE_DEPTH_TEST);
 
     camera(navi.eye[0], navi.eye[1], navi.eye[2], 
          navi.look[0], navi.look[1], navi.look[2], 
@@ -109,7 +133,8 @@ public void draw() {
          
   // update the camera
   kinect.update();
-  //kinect.update(sessionManager);
+  kinect.update(sm);
+  pointDrawer.draw();
   
   // for all users from 1 to 10
   int i;
@@ -249,9 +274,9 @@ void drawPoints(int userId)
   kinect.convertRealWorldToProjective(rightFoot, jointPos_rightFoot);
   
     //find the difference in distance between each joint
-    neckToTorso = distance3D(jointPos_neck, jointPos_torso);
-    rightShoulderToElbow = distance3D(jointPos_rightShoulder, jointPos_rightElbow);
-    leftShoulderToElbow = distance3D(jointPos_leftShoulder, jointPos_leftElbow);
+    neckToTorso = JointUtils.distance3D(jointPos_neck, jointPos_torso);
+    rightShoulderToElbow = JointUtils.distance3D(jointPos_rightShoulder, jointPos_rightElbow);
+    leftShoulderToElbow = JointUtils.distance3D(jointPos_leftShoulder, jointPos_leftElbow);
     
   // draw the joint spheres
   pushMatrix();
@@ -390,22 +415,7 @@ public void draw3DRect()
   pgl.endGL();
 }
 
-// calculate the distance between any two points in 3D space and return it as a float
-public float distance3D(PVector point1, PVector point2)
-{
-   float diff_x, diff_y, diff_z;    // to store differences along x, y and z axes
-   float distance;                  // to store final distance value using 2 vectors
- 
-   // calculate the difference between the two points
-   diff_x = point1.x - point2.x;
-   diff_y = point1.y - point2.y;
-   diff_z = point1.z - point2.z; 
- 
-   // calculate the Euclidean distance between the two points
-   distance = sqrt(pow(diff_x,2)+pow(diff_y,2)+pow(diff_z,2));
- 
-   return distance;  // return the distance as a float
-}
+
 
 
 
@@ -486,5 +496,40 @@ void onEndSession()
 void onFocusSession(String strFocus, PVector pos, float progress)
 {
   println("onFocusSession: focus=" + strFocus + ",pos=" + pos + ",progress=" + progress);
+}
+
+/////////////////////////////
+//    Hand-based events    //
+/////////////////////////////
+
+void onCreateHands(int handId, PVector pos, float time)
+{
+  println("onCreateHands - handId: " + handId + ", pos: " + pos + ", time:" + time);
+}
+
+void onUpdateHands(int handId, PVector pos, float time)
+{
+  // println("onUpdateHandsCb - handId: " + handId + ", pos: " + pos + ", time:" + time);
+}
+
+void onDestroyHands(int handId, float time)
+{
+  println("onDestroyHandsCb - handId: " + handId + ", time:" + time);
+}
+
+////////////////////////////////
+//    Gesture-based events    //
+////////////////////////////////
+
+void onRecognizeGesture(String strGesture, PVector idPosition, PVector endPosition)
+{
+  println("onRecognizeGesture - strGesture: " + strGesture + 
+    ", idPosition: " + idPosition + ", endPosition:" + endPosition);
+}
+
+void onProgressGesture(String strGesture, PVector position, float progress)
+{
+  println("onProgressGesture - strGesture: " + strGesture + 
+    ", position: " + position + ", progress:" + progress);
 }
 

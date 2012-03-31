@@ -11,7 +11,7 @@
 
 public abstract class GLTriangulatedSurface extends GLGeometry
 {    
-	protected int size;
+    protected int size;
     protected int udiv,         	// # of divisions in each direction
                   vdiv;         	// of the mesh
     protected int vlocation,

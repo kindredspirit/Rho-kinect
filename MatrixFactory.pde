@@ -1,5 +1,6 @@
 /**
  * @author mbranton
+ * Modified by: Moe
  * Created: on July 24, 2011
  *
  * Purpose: provides static methods for matrix and vector operations
@@ -297,6 +298,20 @@ static class MatrixFactory
     crossp[1]=v[2]*w[0]-v[0]*w[2];
     crossp[2]=v[0]*w[1]-v[1]*w[0];
 
+    return crossp;
+  }
+  
+  //compute the crossproduct of v and w as PVectors
+  // input: the vectors to be crossed
+  // returns: the cross-product as an array
+  public static float[] crossprod(PVector v, PVector w)
+  {
+    float crossp[];
+    crossp = new float[3];
+    crossp[0]= v.y*w.z - v.z*w.y;
+    crossp[1]= v.z*w.x - v.x*w.z;
+    crossp[2]= v.x*w.y - v.y*w.x;
+    
     return crossp;
   }
 

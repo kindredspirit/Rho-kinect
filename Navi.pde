@@ -1,8 +1,17 @@
+/**
+*  Class Navi - does all the math for camera controls
+*               and view changes as the player is moving
+*               around in the 3D scene.
+*  @author Moe
+*  @since September 2011  
+*      -revision 2: ported from JOGL to processing environment
+*/
+
 public class Navi
 {
   public float[] eye, look, lookv, up;
   private double phi, theta;
-  private double angle_incr;	// increment viewing angles by 10 degrees
+  private double angle_incr = 10;	// increment viewing angles by 10 degrees
   private float distance;
 
   public Navi()
