@@ -13,15 +13,32 @@ Libraries you will need to run my program:
 
 SAITO OBJ LOADER
 -http://code.google.com/p/saitoobjloader/
-	-this is being used in my program to attach meshes i have made in maya to the character that is being tracked by the kinect and displayed in the application window.
+	-this is being used in my program to attach meshes i have made in maya to the character that is being tracked by 		
+	 the kinect and displayed in the application window.
 
 SIMPLE OPENNI (OPENNI library wrapper for Processing)
 -http://code.google.com/p/simple-openni/
-	first download the OpenNI_NITE zip package appropriate for your system architecture, unzip the archive and run the install.sh file
-(the install.sh file will simply run a bash script in the console to put the openi and nite files in the correct directory configuration)
-	then download the SimpleOpenNI-0.26.zip and extract all files. Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be located in which ever directory you have specified for your Processing sketches. (Normally in /Users/username/Documents/Processing/")
+	first download the OpenNI_NITE zip package appropriate for your system architecture, unzip the archive and run 
+	the install.sh file (the install.sh file will simply run a bash script in the console to put the openi and nite 
+	files in the correct directory configuration) then download the SimpleOpenNI-0.26.zip and extract all files. 
+	Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be 
+	located in which ever directory you have specified for your Processing sketches. (Normally in /Users/usernam
+	/Documents/Processing/")
 
 DANIEL SHIFFMAN KINECT (Optional but recommended)
 -http://www.shiffman.net/p5/kinect/
-	his tutorials are also very helpful in getting started with not only his libraries but the general idea and mechanics of the kinect itself.
+	his tutorials are also very helpful in getting started with not only his libraries but the general idea and 
+	mechanics of the kinect itself.
 
+----------------------------------------------------------------------------------------------------------------------
+
+A FEW NOTES ON COMPATIBILITY:
+
+
+Processing 2.0a4 will not play nicely with older versions of opengl calls made through java (JOGL functions) - in fact, opengl in general tends to be more than a bit sluggish with any version of Processing later than 1.5.1 ...
+
+As far as the IDE environment is concerned, Processing's IDE is advised, however other Java-friendly IDEs are just fine
+(i.e. Eclipse, netbeans, command line, etc) Do note that your project will have a different setup or file hierarchy when migrating code to different development environments.
+
+These are the operating systems on which this project has been tested:
+	Mac OSX - 10.6.* (Snow Leopard) and 10.7 (Lion)
