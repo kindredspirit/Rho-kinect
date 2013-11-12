@@ -1,5 +1,13 @@
 Rho-kinect
 
+Have questions? Drop me a line!
+chainsawctopus@gmail.com
+brittany.alkire@alexastrategies.com
+
+(i'm bound to check one of them regularly)
+
+
+
 INSTALLING PROCESSING CONTRIBUTED LIBRARIES
 
 	if you do not know how to install processing libraries, here is how:
@@ -18,11 +26,11 @@ SAITO OBJ LOADER
 
 SIMPLE OPENNI (OPENNI library wrapper for Processing)
 -http://code.google.com/p/simple-openni/
-	first download the OpenNI_NITE zip package appropriate for your system architecture, unzip the archive and run 
-	the install.sh file (the install.sh file will simply run a bash script in the console to put the openi and nite 
-	files in the correct directory configuration) then download the SimpleOpenNI-0.26.zip and extract all files. 
-	Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be 
-	located in which ever directory you have specified for your Processing sketches. (Normally in /Users/usernam
+	first download the OpenNI_NITE zip package appropriate for your system architecture, unzip the archive and run <br>
+	the install.sh file (the install.sh file will simply run a bash script in the console to put the openi and nite <br>
+	files in the correct directory configuration) then download the SimpleOpenNI-0.26.zip and extract all files. <br>
+	Once all files have been extracted, copy the "library" folder to the "libraries" directory, which should be <br>
+	located in which ever directory you have specified for your Processing sketches. (Normally in /Users/usernam <br>
 	/Documents/Processing/")
 
 DANIEL SHIFFMAN KINECT (Optional but recommended)
@@ -39,7 +47,8 @@ Processing 2.0a4 will not play nicely with older versions of opengl calls made t
 
 As far as the IDE is concerned, Processing's IDE is advised; however, other Java-friendly IDEs are just fine
 (i.e. Eclipse, netbeans, command line, etc) Do note that your project will have a different setup or file hierarchy when migrating code to different development environments.
-
+You'll need to know how to adjust for that accordingly. Of course, if you have questions, feel free to email me at the email addresses i mentioned above because
+because i have written, developed and tested this code in just abouve every text editor you can imagine, so i can save you a lot of undue pain and suffering.
 These are the operating systems on which this project has been tested:
 	Mac OSX - 10.6.* (Snow Leopard) and 10.7 (Lion)
 	Windows 7 is something i have on my TODO list
