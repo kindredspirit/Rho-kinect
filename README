@@ -43,4 +43,12 @@ As far as the IDE is concerned, Processing's IDE is advised; however, other Java
 These are the operating systems on which this project has been tested:
 	Mac OSX - 10.6.* (Snow Leopard) and 10.7 (Lion)
 	Windows 7 is something i have on my TODO list
-	Ubuntu 11.14 and 12.04 is also something i have on my TODO list
+	Ubuntu 11.14 and 12.04 can run this smoothly
+	
+	
+UPDATE 11.12.13
+I am thinking about rewriting my OBJ and MTL parsing code because it's slow and it is making me angry. Also,
+my parser does not quite yet handle quads smoothly. With mine in its current state you need to triangulate your
+surfaces before export. Parametric surfaces are ideal (as they are made up of a bunch of triangles)
+With that said, SaitoOBJ is a FANTASTIC library, but I do believe I would rather use mine because it works just the same
+and my code that comes from my brain is oddly easier to deal with for me than other people. 
