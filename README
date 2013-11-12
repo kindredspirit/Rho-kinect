@@ -47,8 +47,18 @@ These are the operating systems on which this project has been tested:
 	
 	
 UPDATE 11.12.13
+
 I am thinking about rewriting my OBJ and MTL parsing code because it's slow and it is making me angry. Also,
 my parser does not quite yet handle quads smoothly. With mine in its current state you need to triangulate your
 surfaces before export. Parametric surfaces are ideal (as they are made up of a bunch of triangles)
-With that said, SaitoOBJ is a FANTASTIC library, but I do believe I would rather use mine because it works just the same
-and my code that comes from my brain is oddly easier to deal with for me than other people. 
+With that said, SaitoOBJ is a FANTASTIC library, but I do believe I would rather use mine because it works much the same way
+(as it stands, Saito's library is mre stable) and any code that comes from my brain is oddly easier to deal with for me than other people, 
+and at the end the day, I feel more accomplished.
+
+Also be expecting better collision code and a fix for that pesky little glMatrix glitch (you know, the one that sends
+you flying with the ball your "character" picks up) Yeah, workin' on that. 
+
+
+Anyone who is working with graphics, opengl or kinect is more than welcome to use this code - at their own risk. And hell,
+if you do something cool and make it better, message me! I'd love to give you a well-deserved beer or cookie.
+
